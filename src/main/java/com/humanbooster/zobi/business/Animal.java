@@ -1,4 +1,4 @@
-package zobi;
+package com.humanbooster.zobi.business;
 
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;

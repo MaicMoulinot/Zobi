@@ -1,7 +1,4 @@
-/**
- * 
- */
-package zobi;
+package com.humanbooster.zobi.business;
 
 import org.junit.Test;
 

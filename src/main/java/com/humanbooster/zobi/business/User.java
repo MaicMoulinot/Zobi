@@ -1,4 +1,4 @@
-package zobi;
+package com.humanbooster.zobi.business;
 
 import java.util.ArrayList;
 
