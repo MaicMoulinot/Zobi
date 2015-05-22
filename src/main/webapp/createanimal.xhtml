@@ -49,17 +49,32 @@
 				<h:outputLabel for="species">
 					<h:outputText id="speciesLabel" value="Species: " />
 				</h:outputLabel>
-				<h:selectOneMenu id="species" value="#{animal.species}"
-					required="true" requiredMessage="This selection box is mandatory.">
-					<f:selectItem itemValue="none" itemLabel="" noSelectionOption="true" />
+				<h:selectOneMenu id="species" value="#{species.commonName}"
+					validatorMessage="The selection of a species is mandatory.">
+					<f:selectItem itemValue="007" itemLabel="Choose species" noSelectionOption="true" />
 					<f:selectItem itemValue="boa" itemLabel="Boa" />
 					<f:selectItem itemValue="bonobo" itemLabel="Bonobo" />
 					<f:selectItem itemValue="elephant" itemLabel="Elephant" />
 					<f:selectItem itemValue="kookaburra" itemLabel="Kookaburra" />
 					<f:selectItem itemValue="whale" itemLabel="Whale" />
+					<f:validateRegex pattern="[a-z]*" />
 				</h:selectOneMenu>
 				<h:message style="color: red" for="species" />
 
+				<h:outputLabel for="enclosure">
+					<h:outputText id="enclosureLabel" value="Enclosure: " />
+				</h:outputLabel>
+				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
+					validatorMessage="The selection of an enclosure is mandatory.">
+					<f:selectItem itemValue="007" itemLabel="Choose enclosure" noSelectionOption="true" />
+					<f:selectItem itemValue="aviary" itemLabel="Aviary" />
+					<f:selectItem itemValue="vivarium" itemLabel="Vivarium" />
+					<f:selectItem itemValue="pool" itemLabel="Pool" />
+					<f:selectItem itemValue="bigcage" itemLabel="Big cage" />
+					<f:selectItem itemValue="smallcage" itemLabel="Small cage" />
+					<f:validateRegex pattern="[a-z]*" />
+				</h:selectOneMenu>
+				<h:message style="color: red" for="enclosure" />
 			</h:panelGrid>
 
 			<!-- Button -->

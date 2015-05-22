@@ -8,7 +8,7 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>Display basic informations about an animal</h2>
+		<h2>Display basic informations about #{animal.matricule}</h2>
 		<br />
 		<br />
 		<h:form>
@@ -33,7 +33,12 @@
 				<h:outputLabel for="species">
 					<h:outputText id="speciesLabel" value="Species: " />
 				</h:outputLabel>
-				<h:outputText id="species" value="#{animal.species}" />
+				<h:outputText id="species" value="#{species.commonName}" />
+				
+				<h:outputLabel for="enclosure">
+					<h:outputText id="enclosureLabel" value="Enclosure: " />
+				</h:outputLabel>
+				<h:outputText id="enclosure" value="#{enclosure.id}" />
 
 			</h:panelGrid>
 

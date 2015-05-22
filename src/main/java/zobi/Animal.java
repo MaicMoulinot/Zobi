@@ -12,7 +12,8 @@ public class Animal {
 	private String matricule;
 	private int age;
 	private String birthPlace;
-	private String species;
+	private Species species;
+	private Enclosure enclosure;
 
 	/**
 	 * @param context a FacesContext.
@@ -84,7 +85,7 @@ public class Animal {
 	/**
 	 * @return the species
 	 */
-	public String getSpecies() {
+	public Species getSpecies() {
 		return species;
 	}
 
@@ -92,8 +93,22 @@ public class Animal {
 	 * @param species
 	 *            the species to set
 	 */
-	public void setSpecies(String species) {
+	public void setSpecies(Species species) {
 		this.species = species;
+	}
+
+	/**
+	 * @return the enclosure
+	 */
+	public Enclosure getEnclosure() {
+		return enclosure;
+	}
+
+	/**
+	 * @param enclosure the enclosure to set
+	 */
+	public void setEnclosure(Enclosure enclosure) {
+		this.enclosure = enclosure;
 	}
 
 }
