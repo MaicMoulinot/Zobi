@@ -10,19 +10,25 @@
 	<ui:define name="content">
 		<h3>Entrez votre login :</h3>
 		<h:form>
-			<h:messages />
+			<h:messages errorClass="messages" globalOnly="true" />
+			<h:outputLabel value="Il y au moins une erreur de saisie!"
+				rendered="#{not empty facesContext.messageList}"
+				styleClass="messages" />
 			<h:panelGrid columns="3">
 				Nom d'utilisateur :
-				<h:inputText id="login"	required="true"
-				requiredMessage="Le nom est obligatoire"/>
-				<h:message for="login"/>
+				<h:inputText id="login" required="true"
+					requiredMessage="Le nom est obligatoire" />
+				<h:message for="login" errorClass="messages" />
 				Mot de passe :
 				<h:inputSecret redisplay="false" id="password" required="true"
-				requiredMessage="Le mot de passe est obligatoire"/>
-				<h:message for="password"/>
+					requiredMessage="Le mot de passe est obligatoire" />
+				<h:message for="password" errorClass="messages" />
 			</h:panelGrid>
 			<h:commandButton value="Valider" />
 		</h:form>
+		<h:outputLink value="inscription.xhtml">
+			<f:verbatim>Ajouter un utilisateur</f:verbatim>
+		</h:outputLink>
 	</ui:define>
 </ui:composition>
 </html>
