@@ -8,68 +8,50 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>Add a new animal</h2>
+		<h2>Display basic informations about an animal</h2>
 		<br />
 		<br />
 		<h:form>
 			<h:messages rendered="#{not empty facesContext.messageList}" />
 
-			<h:panelGrid columns="3">
+			<h:panelGrid columns="2">
 				<h:outputLabel for="matricule">
 					<h:outputText id="matriculeLabel" value="Matricule: " />
 				</h:outputLabel>
-				<h:inputText id="matricule" value="#{animal.matricule}"
-					required="true" requiredMessage="This field is mandatory."
-					validatorMessage="Matricule must be at least 5 characters long.">
-					<f:validateLength minimum="5" />
-				</h:inputText>
-				<h:message style="color: blue" for="matricule" />
+				<h:outputText id="matricule" value="#{animal.matricule}" />
 
 				<h:outputLabel for="age">
 					<h:outputText id="ageLabel" value="Age in days: " />
 				</h:outputLabel>
-				<h:inputText id="age" value="#{animal.age}" required="true"
-					requiredMessage="This field is mandatory."
-					converterMessage="Age must be a integer."
-					validatorMessage="Age must be at least 1 day.">
-					<f:convertNumber />
-					<f:validateLongRange minimum="1" />
-				</h:inputText>
-				<h:message style="color: green" for="age" />
+				<h:outputText id="age" value="#{animal.age}" />
 
 				<h:outputLabel for="birthPlace">
 					<h:outputText id="birthPlaceLabel" value="Birth Place: " />
 				</h:outputLabel>
-				<h:inputText id="birthPlace" value="#{animal.birthPlace}"
-					required="true" requiredMessage="This field is mandatory."
-					validator="#{animal.validateBirthPlace}">
-				</h:inputText>
-				<h:message style="color: yellow" for="birthPlace" />
+				<h:outputText id="birthPlace" value="#{animal.birthPlace}" />
 
 				<h:outputLabel for="species">
 					<h:outputText id="speciesLabel" value="Species: " />
 				</h:outputLabel>
-				<h:selectOneMenu id="species" value="#{animal.species}"
-					required="true" requiredMessage="This selection box is mandatory.">
-					<f:selectItem itemValue="none" itemLabel="" noSelectionOption="true" />
-					<f:selectItem itemValue="boa" itemLabel="Boa" />
-					<f:selectItem itemValue="bonobo" itemLabel="Bonobo" />
-					<f:selectItem itemValue="elephant" itemLabel="Elephant" />
-					<f:selectItem itemValue="kookaburra" itemLabel="Kookaburra" />
-					<f:selectItem itemValue="whale" itemLabel="Whale" />
-				</h:selectOneMenu>
-				<h:message style="color: red" for="species" />
+				<h:outputText id="species" value="#{animal.species}" />
 
 			</h:panelGrid>
 
 			<!-- Button -->
 			<br />
 			<br />
-			<h:outputLabel for="create">
-				<h:outputText id="createLabel"
-					value="Do not press the red button: " />
-			</h:outputLabel>
-			<h:commandButton id="create" value="Red Button" action="create" />
+			<h:panelGrid columns="4">
+				<h:outputLabel for="food">
+					<h:outputText id="foodLabel" value="Food and Nutrition: " />
+				</h:outputLabel>
+				<h:commandButton id="food" value="Food and Nutrition"
+					action="food" />
+				<h:outputLabel for="medication">
+					<h:outputText id="medicationLabel" value="Medication: " />
+				</h:outputLabel>
+				<h:commandButton id="medication" value="Medication"
+					action="medication" />
+			</h:panelGrid>
 			<br />
 			<br />
 		</h:form>
