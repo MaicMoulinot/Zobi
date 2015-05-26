@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/Template/Basic.xhtml">
+
+	<ui:define name="content">
+	<center>
+		<h2> inventory management </h2>
+		<h:form id="gestionstock">
+		<br/>
+		<br/>
+			<h:panelGrid columns="3">
+			Product :
+			<h:inputText id="productname" value=" " />
+			<h:commandButton id="submitproduct" value="Go to product" action ="#{stock.goStock}" />
+			</h:panelGrid>
+		
+		</h:form>
+		
+<!-- 		<h:form id="gestionplanning"> -->
+<!-- 		<br/> -->
+<!-- 		<br/> -->
+<!-- 			<h:panelGrid columns="3"> -->
+<!-- 			User : -->
+<!-- 			<h:inputText id="user" value="" /> -->
+<!-- 			<h:commandButton id="submituser" value="go to users" action ="#{stock}" /> -->
+<!-- 			</h:panelGrid> -->
+		
+<!-- 		</h:form> -->
+		</center>
+	</ui:define>
+
+</ui:composition>
+</html>
