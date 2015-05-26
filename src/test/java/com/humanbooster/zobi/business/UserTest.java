@@ -10,7 +10,7 @@ public class UserTest {
 	public void test() {
 		User tester = new User();
 
-		assertEquals("en cours de developpement", "nok", tester.validate());
+		assertEquals("en cours de developpement", "ok", tester.validate());
 	}
 
 }
