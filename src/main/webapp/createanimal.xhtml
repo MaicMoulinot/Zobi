@@ -50,7 +50,7 @@
 				</h:outputLabel>
 				<h:selectOneMenu id="species" value="#{species.commonName}"
 					validatorMessage="#{msgs.mandatory}">
-					<f:selectItem itemValue="007" itemLabel="Choose species"
+					<f:selectItem itemValue="007" itemLabel="#{msgs.animalspeciesdefault}"
 						noSelectionOption="true" />
 					<f:selectItem itemValue="boa" itemLabel="Boa" />
 					<f:selectItem itemValue="bonobo" itemLabel="Bonobo" />
@@ -66,7 +66,7 @@
 				</h:outputLabel>
 				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
 					validatorMessage="#{msgs.mandatory}">
-					<f:selectItem itemValue="007" itemLabel="Choose enclosure"
+					<f:selectItem itemValue="007" itemLabel="#{msgs.animalenclosuredefault}"
 						noSelectionOption="true" />
 					<f:selectItem itemValue="aviary" itemLabel="Aviary" />
 					<f:selectItem itemValue="vivarium" itemLabel="Vivarium" />
