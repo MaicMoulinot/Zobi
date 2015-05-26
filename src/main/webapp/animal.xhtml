@@ -8,35 +8,34 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>Display basic informations about #{animal.matricule}</h2>
+		<h2>#{msgs.animaldisplay}#{animal.matricule}</h2>
 		<br />
 		<br />
 		<h:form>
-			<h:messages rendered="#{not empty facesContext.messageList}" />
 
 			<h:panelGrid columns="2">
 				<h:outputLabel for="matricule">
-					<h:outputText id="matriculeLabel" value="Matricule: " />
+					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
 				</h:outputLabel>
 				<h:outputText id="matricule" value="#{animal.matricule}" />
 
 				<h:outputLabel for="age">
-					<h:outputText id="ageLabel" value="Age in days: " />
+					<h:outputText id="ageLabel" value="#{msgs.animalage}" />
 				</h:outputLabel>
 				<h:outputText id="age" value="#{animal.age}" />
 
 				<h:outputLabel for="birthPlace">
-					<h:outputText id="birthPlaceLabel" value="Birth Place: " />
+					<h:outputText id="birthPlaceLabel" value="#{msgs.animalbirthplace}" />
 				</h:outputLabel>
 				<h:outputText id="birthPlace" value="#{animal.birthPlace}" />
 
 				<h:outputLabel for="species">
-					<h:outputText id="speciesLabel" value="Species: " />
+					<h:outputText id="speciesLabel" value="#{msgs.animalspecies}" />
 				</h:outputLabel>
 				<h:outputText id="species" value="#{species.commonName}" />
 				
 				<h:outputLabel for="enclosure">
-					<h:outputText id="enclosureLabel" value="Enclosure: " />
+					<h:outputText id="enclosureLabel" value="#{msgs.animalenclosure}" />
 				</h:outputLabel>
 				<h:outputText id="enclosure" value="#{enclosure.id}" />
 
@@ -47,14 +46,14 @@
 			<br />
 			<h:panelGrid columns="4">
 				<h:outputLabel for="food">
-					<h:outputText id="foodLabel" value="Food and Nutrition: " />
+					<h:outputText id="foodLabel" value="#{msgs.animalfood}" />
 				</h:outputLabel>
-				<h:commandButton id="food" value="Food and Nutrition"
+				<h:commandButton id="food" value="#{msgs.animalfoodshort}"
 					action="food" />
 				<h:outputLabel for="medication">
-					<h:outputText id="medicationLabel" value="Medication: " />
+					<h:outputText id="medicationLabel" value="#{msgs.animalmedication}" />
 				</h:outputLabel>
-				<h:commandButton id="medication" value="Medication"
+				<h:commandButton id="medication" value="#{msgs.animalmedicationshort}"
 					action="medication" />
 			</h:panelGrid>
 			<br />

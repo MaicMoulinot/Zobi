@@ -8,50 +8,50 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>Add a new animal</h2>
+		<h2>#{msgs.animaladd}</h2>
 		<br />
 		<br />
 		<h:form>
 			<h:messages rendered="#{not empty facesContext.messageList}" />
-
 			<h:panelGrid columns="3">
 				<h:outputLabel for="matricule">
-					<h:outputText id="matriculeLabel" value="Matricule: " />
+					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
 				</h:outputLabel>
 				<h:inputText id="matricule" value="#{animal.matricule}"
-					required="true" requiredMessage="This field is mandatory."
-					validatorMessage="Matricule must be at least 5 characters long.">
+					required="true" requiredMessage="#{msgs.mandatory}"
+					validatorMessage="#{msgs.lenght5}">
 					<f:validateLength minimum="5" />
 				</h:inputText>
 				<h:message style="color: blue" for="matricule" />
 
 				<h:outputLabel for="age">
-					<h:outputText id="ageLabel" value="Age in days: " />
+					<h:outputText id="ageLabel" value="#{msgs.animalage}" />
 				</h:outputLabel>
 				<h:inputText id="age" value="#{animal.age}" required="true"
-					requiredMessage="This field is mandatory."
-					converterMessage="Age must be a integer."
-					validatorMessage="Age must be at least 1 day.">
+					requiredMessage="#{msgs.mandatory}"
+					converterMessage="#{msgs.integer}"
+					validatorMessage="#{msgs.agemin}">
 					<f:convertNumber />
 					<f:validateLongRange minimum="1" />
 				</h:inputText>
 				<h:message style="color: green" for="age" />
 
 				<h:outputLabel for="birthPlace">
-					<h:outputText id="birthPlaceLabel" value="Birth Place: " />
+					<h:outputText id="birthPlaceLabel" value="#{msgs.animalbirthplace}" />
 				</h:outputLabel>
 				<h:inputText id="birthPlace" value="#{animal.birthPlace}"
-					required="true" requiredMessage="This field is mandatory."
+					required="true" requiredMessage="#{msgs.mandatory}"
 					validator="#{animal.validateBirthPlace}">
 				</h:inputText>
 				<h:message style="color: yellow" for="birthPlace" />
 
 				<h:outputLabel for="species">
-					<h:outputText id="speciesLabel" value="Species: " />
+					<h:outputText id="speciesLabel" value="#{msgs.animalspecies}" />
 				</h:outputLabel>
 				<h:selectOneMenu id="species" value="#{species.commonName}"
-					validatorMessage="The selection of a species is mandatory.">
-					<f:selectItem itemValue="007" itemLabel="Choose species" noSelectionOption="true" />
+					validatorMessage="#{msgs.mandatory}">
+					<f:selectItem itemValue="007" itemLabel="#{msgs.animalspeciesdefault}"
+						noSelectionOption="true" />
 					<f:selectItem itemValue="boa" itemLabel="Boa" />
 					<f:selectItem itemValue="bonobo" itemLabel="Bonobo" />
 					<f:selectItem itemValue="elephant" itemLabel="Elephant" />
@@ -62,11 +62,12 @@
 				<h:message style="color: red" for="species" />
 
 				<h:outputLabel for="enclosure">
-					<h:outputText id="enclosureLabel" value="Enclosure: " />
+					<h:outputText id="enclosureLabel" value="#{msgs.animalenclosure}" />
 				</h:outputLabel>
 				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
-					validatorMessage="The selection of an enclosure is mandatory.">
-					<f:selectItem itemValue="007" itemLabel="Choose enclosure" noSelectionOption="true" />
+					validatorMessage="#{msgs.mandatory}">
+					<f:selectItem itemValue="007" itemLabel="#{msgs.animalenclosuredefault}"
+						noSelectionOption="true" />
 					<f:selectItem itemValue="aviary" itemLabel="Aviary" />
 					<f:selectItem itemValue="vivarium" itemLabel="Vivarium" />
 					<f:selectItem itemValue="pool" itemLabel="Pool" />
@@ -81,13 +82,14 @@
 			<br />
 			<br />
 			<h:outputLabel for="create">
-				<h:outputText id="createLabel"
-					value="Do not press the red button: " />
+				<h:outputText id="createLabel" value="#{msgs.donotpressthe}" />
 			</h:outputLabel>
-			<h:commandButton id="create" value="Red Button" action="create" />
+			<h:commandButton id="create" value="#{msgs.redbutton}"
+				action="create" />
 			<br />
 			<br />
 		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

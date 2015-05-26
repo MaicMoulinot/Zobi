@@ -24,11 +24,6 @@
 		</navigation-case>
 	</navigation-rule>
 	<application>
-		<locale-config>
-			<default-locale>en_US</default-locale>
-			<supported-locale>zh_CN</supported-locale>
-			<supported-locale>fr</supported-locale>
-		</locale-config>
 		<resource-bundle>
 			<base-name>messages.messages</base-name>
 			<var>msgs</var>
