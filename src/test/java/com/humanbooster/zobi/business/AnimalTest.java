@@ -1,7 +1,4 @@
-/**
- * 
- */
-package zobi;
+package com.humanbooster.zobi.business;
 
 import static org.junit.Assert.assertEquals;
 

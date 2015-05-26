@@ -9,7 +9,50 @@
 <ui:composition template="/WEB-INF/Template/Basic.xhtml">
 
 	<ui:define name="content">
-	    //TODO page inscription!
+		<h3>Veuillez rentrez les information d'une nouvel(le) employé(e)
+			:</h3>
+		<h:form>
+			<h:messages errorClass="messages" globalOnly="true" />
+			<h:outputLabel value="Il y au moins une erreur de saisie!"
+				rendered="#{not empty facesContext.messageList}"
+				styleClass="messages" />
+			<h:panelGrid columns="3">
+				Nom :
+				<h:inputText id="lastname" value="#{user.lastname}" required="true"
+					requiredMessage="Le nom est obligatoire" />
+				<h:message for="lastname" errorClass="messages" />
+				Prénom :
+				<h:inputText id="firstname" value="#{user.firstname}"
+					required="true" requiredMessage="Le prénom est obligatoire" />
+				<h:message for="firstname" errorClass="messages" />
+				Login :
+				<h:inputText id="login" value="#{user.login}" required="true"
+					requiredMessage="Le login est obligatoire" />
+				<h:message for="login" errorClass="messages" />
+				Mot de passe :
+				<h:inputText id="password" value="#{user.password}" required="true"
+					requiredMessage="Le mot de passe est obligatoire"
+					validator="#{user.validatePassword}" />
+				<h:message for="password" errorClass="messages" />
+				Retaper le mot de passe :
+				<h:inputText id="retypepassword" value="#{user.retypepassword}"
+					required="true"
+					requiredMessage="La validation du mot de passe est obligatoire"
+					validator="#{user.validateRetypepassword}"
+					validatorMessage="Les deux mots de passe sont différents" />
+				<h:message for="retypepassword" errorClass="messages" />
+				Type de compte :
+				<h:selectOneMenu id="userType" value="#{user.userType}">
+					<f:selectItem id="item1" itemLabel="Administrateur"
+						itemValue="admin" />
+					<f:selectItem id="item2" itemLabel="Vétérinaire" itemValue="veto" />
+					<f:selectItem id="item3" itemLabel="Soigneur" itemValue="soigneur" />
+				</h:selectOneMenu>
+				<h:message for="userType" errorClass="messages" />
+			</h:panelGrid>
+			<h:commandButton id="submit" value="Valider"
+				action="#{user.validate}" />
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

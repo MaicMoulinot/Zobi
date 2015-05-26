@@ -16,15 +16,15 @@
 				styleClass="messages" />
 			<h:panelGrid columns="3">
 				Nom d'utilisateur :
-				<h:inputText id="login" required="true"
+				<h:inputText id="login" value ="#{login.login}" required="true"
 					requiredMessage="Le nom est obligatoire" />
 				<h:message for="login" errorClass="messages" />
 				Mot de passe :
-				<h:inputSecret redisplay="false" id="password" required="true"
+				<h:inputSecret redisplay="false" id="password" value="#{login.password}" required="true"
 					requiredMessage="Le mot de passe est obligatoire" />
 				<h:message for="password" errorClass="messages" />
 			</h:panelGrid>
-			<h:commandButton value="Valider" />
+			<h:commandButton value="Valider" action="#{login.validate}" />
 		</h:form>
 		<h:outputLink value="inscription.xhtml">
 			<f:verbatim>Ajouter un utilisateur</f:verbatim>
