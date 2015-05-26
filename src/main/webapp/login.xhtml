@@ -6,29 +6,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/WEB-INF/Template/Basic.xhtml">
-	<ui:define name="content">
-		<h3>Entrez votre login :</h3>
-		<h:form>
-			<h:messages errorClass="messages" globalOnly="true" />
-			<h:outputLabel value="Il y au moins une erreur de saisie!"
-				rendered="#{not empty facesContext.messageList}"
-				styleClass="messages" />
-			<h:panelGrid columns="3">
+<f:view locale="#{facesContext.externalContext.requestLocale}">
+	<ui:composition template="/WEB-INF/Template/Basic.xhtml">
+		<ui:define name="content">
+			<h3>#{msgs.loginTitle}</h3>
+			<h:form>
+				<h:messages errorClass="messages" globalOnly="true" />
+				<h:outputLabel value="#{msgs.loginerror1}"
+					rendered="#{not empty facesContext.messageList}"
+					styleClass="messages" />
+				<h:panelGrid columns="3">
 				Nom d'utilisateur :
-				<h:inputText id="login" value ="#{login.login}" required="true"
-					requiredMessage="Le nom est obligatoire" />
-				<h:message for="login" errorClass="messages" />
+				<h:inputText id="login" value="#{login.login}" required="true"
+						requiredMessage="Le nom est obligatoire" />
+					<h:message for="login" errorClass="messages" />
 				Mot de passe :
-				<h:inputSecret redisplay="false" id="password" value="#{login.password}" required="true"
-					requiredMessage="Le mot de passe est obligatoire" />
-				<h:message for="password" errorClass="messages" />
-			</h:panelGrid>
-			<h:commandButton value="Valider" action="#{login.validate}" />
-		</h:form>
-		<h:outputLink value="inscription.xhtml">
-			<f:verbatim>Ajouter un utilisateur</f:verbatim>
-		</h:outputLink>
-	</ui:define>
-</ui:composition>
+				<h:inputSecret redisplay="false" id="password"
+						value="#{login.password}" required="true"
+						requiredMessage="Le mot de passe est obligatoire" />
+					<h:message for="password" errorClass="messages" />
+				</h:panelGrid>
+				<h:commandButton value="Valider" action="#{login.validate}" />
+			</h:form>
+			<h:outputLink value="inscription.xhtml">
+				<f:verbatim>Ajouter un utilisateur</f:verbatim>
+			</h:outputLink>
+		</ui:define>
+	</ui:composition>
+</f:view>
 </html>
