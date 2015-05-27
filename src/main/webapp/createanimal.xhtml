@@ -92,4 +92,99 @@
 
 	</ui:define>
 </ui:composition>
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/Template/Basic.xhtml">
+	<ui:define name="content">
+		<h2>#{msgs.animaladd}</h2>
+		<br />
+		<br />
+		<h:form>
+			<h:messages rendered="#{not empty facesContext.messageList}" />
+			<h:panelGrid columns="3">
+				<h:outputLabel for="matricule">
+					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
+				</h:outputLabel>
+				<h:inputText id="matricule" value="#{animal.matricule}"
+					required="true" requiredMessage="#{msgs.mandatory}"
+					validatorMessage="#{msgs.lenght5}">
+					<f:validateLength minimum="5" />
+				</h:inputText>
+				<h:message style="color: blue" for="matricule" />
+
+				<h:outputLabel for="age">
+					<h:outputText id="ageLabel" value="#{msgs.animalage}" />
+				</h:outputLabel>
+				<h:inputText id="age" value="#{animal.age}" required="true"
+					requiredMessage="#{msgs.mandatory}"
+					converterMessage="#{msgs.integer}"
+					validatorMessage="#{msgs.agemin}">
+					<f:convertNumber />
+					<f:validateLongRange minimum="1" />
+				</h:inputText>
+				<h:message style="color: green" for="age" />
+
+				<h:outputLabel for="birthPlace">
+					<h:outputText id="birthPlaceLabel" value="#{msgs.animalbirthplace}" />
+				</h:outputLabel>
+				<h:inputText id="birthPlace" value="#{animal.birthPlace}"
+					required="true" requiredMessage="#{msgs.mandatory}"
+					validator="#{animal.validateBirthPlace}">
+				</h:inputText>
+				<h:message style="color: yellow" for="birthPlace" />
+
+				<h:outputLabel for="species">
+					<h:outputText id="speciesLabel" value="#{msgs.animalspecies}" />
+				</h:outputLabel>
+				<h:selectOneMenu id="species" value="#{species.commonName}"
+					validatorMessage="#{msgs.mandatory}">
+					<f:selectItem itemValue="007"
+						itemLabel="#{msgs.animalspeciesdefault}" noSelectionOption="true" />
+					<f:selectItems var="currentSpecies"
+						itemValue="#{currentSpecies.commonName}"
+						itemLabel="#{currentSpecies.commonName}"
+						value="#{animal.allSpecies}" />
+					<f:validateRegex pattern="[a-z]*" />
+				</h:selectOneMenu>
+				<h:message style="color: red" for="species" />
+
+				<h:outputLabel for="enclosure">
+					<h:outputText id="enclosureLabel" value="#{msgs.animalenclosure}" />
+				</h:outputLabel>
+				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
+					validatorMessage="#{msgs.mandatory}">
+					<f:selectItem itemValue="007"
+						itemLabel="#{msgs.animalenclosuredefault}"
+						noSelectionOption="true" />
+					<f:selectItem itemValue="aviary" itemLabel="Aviary" />
+					<f:selectItem itemValue="vivarium" itemLabel="Vivarium" />
+					<f:selectItem itemValue="pool" itemLabel="Pool" />
+					<f:selectItem itemValue="bigcage" itemLabel="Big cage" />
+					<f:selectItem itemValue="smallcage" itemLabel="Small cage" />
+					<f:validateRegex pattern="[a-z]*" />
+				</h:selectOneMenu>
+				<h:message style="color: red" for="enclosure" />
+			</h:panelGrid>
+
+			<!-- Button -->
+			<br />
+			<br />
+			<h:outputLabel for="create">
+				<h:outputText id="createLabel" value="#{msgs.donotpressthe}" />
+			</h:outputLabel>
+			<h:commandButton id="create" value="#{msgs.redbutton}"
+				action="create" />
+			<br />
+			<br />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>
