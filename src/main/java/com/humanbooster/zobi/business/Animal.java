@@ -1,10 +1,13 @@
 package com.humanbooster.zobi.business;
 
+import java.util.ArrayList;
+
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Inject;
 
 @Model
 public class Animal {
@@ -14,6 +17,9 @@ public class Animal {
 	private String birthPlace;
 	private Species species;
 	private Enclosure enclosure;
+	
+	@Inject
+	private AnimalListServiceInterface listSpeciesService;
 
 	/**
 	 * @param context a FacesContext.
@@ -109,6 +115,13 @@ public class Animal {
 	 */
 	public void setEnclosure(Enclosure enclosure) {
 		this.enclosure = enclosure;
+	}
+
+	/**
+	 * @return a list of all Species
+	 */
+	public ArrayList<Species> getAllSpecies() {
+		return listSpeciesService.getAllSpecies();
 	}
 
 }

@@ -50,13 +50,12 @@
 				</h:outputLabel>
 				<h:selectOneMenu id="species" value="#{species.commonName}"
 					validatorMessage="#{msgs.mandatory}">
-					<f:selectItem itemValue="007" itemLabel="#{msgs.animalspeciesdefault}"
-						noSelectionOption="true" />
-					<f:selectItem itemValue="boa" itemLabel="Boa" />
-					<f:selectItem itemValue="bonobo" itemLabel="Bonobo" />
-					<f:selectItem itemValue="elephant" itemLabel="Elephant" />
-					<f:selectItem itemValue="kookaburra" itemLabel="Kookaburra" />
-					<f:selectItem itemValue="whale" itemLabel="Whale" />
+					<f:selectItem itemValue="007"
+						itemLabel="#{msgs.animalspeciesdefault}" noSelectionOption="true" />
+					<f:selectItems var="currentSpecies"
+						itemValue="#{currentSpecies.commonName}"
+						itemLabel="#{currentSpecies.commonName}"
+						value="#{animal.allSpecies}" />
 					<f:validateRegex pattern="[a-z]*" />
 				</h:selectOneMenu>
 				<h:message style="color: red" for="species" />
@@ -66,7 +65,8 @@
 				</h:outputLabel>
 				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
 					validatorMessage="#{msgs.mandatory}">
-					<f:selectItem itemValue="007" itemLabel="#{msgs.animalenclosuredefault}"
+					<f:selectItem itemValue="007"
+						itemLabel="#{msgs.animalenclosuredefault}"
 						noSelectionOption="true" />
 					<f:selectItem itemValue="aviary" itemLabel="Aviary" />
 					<f:selectItem itemValue="vivarium" itemLabel="Vivarium" />
