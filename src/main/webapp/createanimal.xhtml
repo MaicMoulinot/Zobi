@@ -12,6 +12,9 @@
 		<br />
 		<br />
 		<h:form>
+			<h:outputLabel value="#{msgs.loginerror1}"
+				rendered="#{not empty facesContext.messageList}"
+				styleClass="messages" />
 			<h:messages rendered="#{not empty facesContext.messageList}" />
 			<h:panelGrid columns="3">
 				<h:outputLabel for="matricule">
