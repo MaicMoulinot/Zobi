@@ -14,7 +14,7 @@ import com.humanbooster.zobi.business.Animal;
  *
  */
 @Stateless
-public class AnimalDaoJpa extends DaoJpa<Integer, Animal> implements AnimalDaoInterface {
+public class AnimalDaoJpa extends DaoJpa<Long, Animal> implements AnimalDaoInterface {
 
 	@Override
 	public ArrayList<String> getAllAnimalsMatricules() {

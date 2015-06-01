@@ -3,7 +3,6 @@ package com.humanbooster.zobi.business;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
@@ -14,9 +13,9 @@ import javax.persistence.NamedQuery;
 @Entity(name="species")
 @NamedQuery(name="Species.findAll", query="SELECT s FROM species s")
 public class Species {
-	
+	 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private long SpeciesId;
 	@Column(unique=true)
 	private String latinName;

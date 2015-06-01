@@ -17,47 +17,47 @@ import com.humanbooster.zobi.business.Species;
  */
 @Stateless
 @Alternative
-public class SpeciesDaoFixed extends DaoFixed<Integer, Species> implements SpeciesDaoInterface {
+public class SpeciesDaoFixed extends DaoFixed<Long, Species> implements SpeciesDaoInterface {
 	
-	private static HashMap<Integer, Species> listSpecies;
+	private static HashMap<Long, Species> listSpecies;
 	
 	public SpeciesDaoFixed() {
 		if (listSpecies == null) {
-			listSpecies = new HashMap<Integer, Species>();
+			listSpecies = new HashMap<Long, Species>();
 			Species boa = new Species();
 			boa.setCommonName("Boa");
 			boa.setLatinName("Boa constrictor");
 			boa.setDiet("Meat");
 			boa.setSpeciesId(0);
-			listSpecies.put(0, boa);
+			listSpecies.put(boa.getSpeciesId(), boa);
 			
 			Species bonobo = new Species();
 			bonobo.setCommonName("Bonobo");
 			bonobo.setLatinName("Pan paniscus");
 			bonobo.setDiet("Bananas");
 			bonobo.setSpeciesId(1);
-			listSpecies.put(1, bonobo);
+			listSpecies.put(bonobo.getSpeciesId(), bonobo);
 			
 			Species elephant = new Species();
 			elephant.setCommonName("Elephant");
 			elephant.setLatinName("Loxodonta africana");
 			elephant.setDiet("Grass");
 			elephant.setSpeciesId(2);
-			listSpecies.put(2, elephant);
+			listSpecies.put(elephant.getSpeciesId(), elephant);
 			
 			Species kookaburra = new Species();
 			kookaburra.setCommonName("Kookaburra");
 			kookaburra.setLatinName("Dacelo novaeguineae");
 			kookaburra.setDiet("Insects");
 			kookaburra.setSpeciesId(3);
-			listSpecies.put(3, kookaburra);
+			listSpecies.put(kookaburra.getSpeciesId(), kookaburra);
 			
 			Species whale = new Species();
 			whale.setCommonName("Whale");
 			whale.setLatinName("Eubalaena glacialis");
 			whale.setDiet("Krill");
 			whale.setSpeciesId(4);
-			listSpecies.put(4, whale);
+			listSpecies.put(whale.getSpeciesId(), whale);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class SpeciesDaoFixed extends DaoFixed<Integer, Species> implements Speci
 
 	@Override
 	public void persist(Species entity) {
-		listSpecies.put(listSpecies.size(), entity);
+		listSpecies.put(Long.valueOf(listSpecies.size()), entity);
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class SpeciesDaoFixed extends DaoFixed<Integer, Species> implements Speci
 	}
 
 	@Override
-	public Species findById(Integer id) {
+	public Species findById(Long id) {
 		return listSpecies.get(id);
 	}
 

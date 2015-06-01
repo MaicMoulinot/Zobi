@@ -56,7 +56,6 @@ public abstract class DaoJpa<K, E> implements Dao<K, E> {
 	 * @see com.humanbooster.zobi.dao.Dao#findAll()
 	 */
 	public Collection<E> findAll() {
-		System.out.println(entityClass.getSimpleName() + ".findAll");
 		return entityManager.createNamedQuery(entityClass.getSimpleName() + ".findAll").getResultList();
 	}
 

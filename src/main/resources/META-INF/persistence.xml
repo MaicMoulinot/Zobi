@@ -26,6 +26,8 @@
       <!-- The datasource is deployed as WEB-INF/zobi-ds.xml, you
          can find it in the source at src/main/webapp/WEB-INF/zobi-ds.xml -->
       <jta-data-source>java:jboss/datasources/zobiDS</jta-data-source>
+      <class>com.humanbooster.zobi.business.Species</class>
+      <class>com.humanbooster.zobi.business.Animal</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />

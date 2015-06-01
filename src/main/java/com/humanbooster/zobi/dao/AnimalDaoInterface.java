@@ -11,7 +11,7 @@ import com.humanbooster.zobi.business.Animal;
  * @author humanbooster
  *
  */
-public interface AnimalDaoInterface extends Dao<Integer, Animal> {
+public interface AnimalDaoInterface extends Dao<Long, Animal> {
 
 	
 	/**

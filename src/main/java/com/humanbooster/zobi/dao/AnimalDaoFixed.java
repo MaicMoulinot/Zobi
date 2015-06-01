@@ -5,6 +5,7 @@ package com.humanbooster.zobi.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
@@ -17,13 +18,13 @@ import com.humanbooster.zobi.business.Animal;
  */
 @Stateless
 @Alternative
-public class AnimalDaoFixed extends DaoFixed <Integer, Animal> implements AnimalDaoInterface {
+public class AnimalDaoFixed extends DaoFixed <Long, Animal> implements AnimalDaoInterface {
 
-	private static ArrayList<Animal> listAnimals;
+	private static HashMap<Long, Animal> listAnimals;
 
 	public AnimalDaoFixed() {
 		if (listAnimals == null) {
-			listAnimals = new ArrayList<>();
+			listAnimals = new HashMap<Long, Animal>();
 		}
 	}
 
@@ -33,22 +34,18 @@ public class AnimalDaoFixed extends DaoFixed <Integer, Animal> implements Animal
 	}
 
 	@Override
-	public Animal findById(Integer id) {
+	public Animal findById(Long id) {
 		return listAnimals.get(id);
 	}
 
 	@Override
 	public Collection<Animal> findAll() {
-		return listAnimals;
+		return listAnimals.values();
 	}
 
 	@Override
 	public void persist(Animal entity) {
-		if (entity.getAnimalId() == 0) {
-			System.out.println("je suis dans un setID c'est moche");
-			entity.setAnimalId(listAnimals.size());
-		}
-		listAnimals.add(entity);
+		listAnimals.put(entity.getAnimalId(), entity);
 	}
 
 	@Override

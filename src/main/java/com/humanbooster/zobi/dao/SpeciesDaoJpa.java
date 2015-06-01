@@ -12,7 +12,6 @@ import com.humanbooster.zobi.business.Species;
  *
  */
 @Stateless
-public class SpeciesDaoJpa extends DaoJpa<Integer, Species> implements SpeciesDaoInterface {
-	
+public class SpeciesDaoJpa extends DaoJpa<Long, Species> implements SpeciesDaoInterface {
 
 }
