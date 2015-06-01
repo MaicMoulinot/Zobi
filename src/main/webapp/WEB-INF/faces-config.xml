@@ -23,6 +23,54 @@
 			<to-view-id>/animal.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>animal.xhtml</display-name>
+		<from-view-id>/animal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>food</from-outcome>
+			<to-view-id>/GestionStock.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+<!-- 	<navigation-rule> -->
+<!-- 		<display-name>animal.xhtml</display-name> -->
+<!-- 		<from-view-id>/animal.xhtml</from-view-id> -->
+<!-- 		<navigation-case> -->
+<!-- 			<from-outcome>medication</from-outcome> -->
+<!-- 			<to-view-id>/treatment.xhtml</to-view-id> -->
+<!-- 		</navigation-case> -->
+<!-- 	</navigation-rule> -->
+	<navigation-rule>
+		<display-name>createanimal.xhtml</display-name>
+		<from-view-id>/createanimal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listanimals</from-outcome>
+			<to-view-id>/allanimals.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>allanimals.xhtml</display-name>
+		<from-view-id>/allanimals.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>animal</from-outcome>
+			<to-view-id>/animal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>allanimals.xhtml</display-name>
+		<from-view-id>/allanimals.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/createanimal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>animal.xhtml</display-name>
+		<from-view-id>/animal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listanimals</from-outcome>
+			<to-view-id>/allanimals.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<application>
 		<resource-bundle>
 			<base-name>messages.messages</base-name>
