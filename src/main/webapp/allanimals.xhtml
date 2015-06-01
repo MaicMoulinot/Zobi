@@ -18,28 +18,23 @@
 				var="currentAnimal"
 				rendered="#{not empty listAnimalsJsf.allAnimals}">
 				<h:column>
-<!-- 					<f:facet name="header">#{msgs.animalid}</f:facet> -->
-					<f:facet name="header">id</f:facet>
+					<f:facet name="header">#{msgs.animalid}</f:facet>
     				#{currentAnimal.matricule} #{currentAnimal.animalId}
     			</h:column>
 				<h:column>
-<!-- 					<f:facet name="header">#{msgs.animalage}</f:facet> -->
-					<f:facet name="header">age</f:facet>
+					<f:facet name="header">#{msgs.animalage}</f:facet>
     				#{currentAnimal.age}
     			</h:column>
 				<h:column>
-<!-- 					<f:facet name="header">#{msgs.animalbirthplace}</f:facet> -->
-					<f:facet name="header">birthplace</f:facet>
+					<f:facet name="header">#{msgs.animalbirthplace}</f:facet>
     				#{currentAnimal.birthPlace}
     			</h:column>
 				<h:column>
-<!-- 					<f:facet name="header">#{msgs.animalspecies}</f:facet> -->
-					<f:facet name="header">species</f:facet>
+					<f:facet name="header">#{msgs.animalspecies}</f:facet>
     				#{currentAnimal.species.commonName}
     			</h:column>
 				<h:column>
-<!-- 					<f:facet name="header">#{msgs.animalenclosure}</f:facet> -->
-					<f:facet name="header">enclosure</f:facet>
+					<f:facet name="header">#{msgs.animalenclosure}</f:facet>
     				#{currentAnimal.enclosure}
     			</h:column>
 			</h:dataTable>
