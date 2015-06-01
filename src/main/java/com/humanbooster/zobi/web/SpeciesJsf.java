@@ -1,27 +1,28 @@
-package com.humanbooster.zobi.business;
+package com.humanbooster.zobi.web;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import java.util.ArrayList;
 
-/**
- * @author humanbooster
- *
- */
-@Entity(name="species")
-@NamedQuery(name="Species.findAll", query="SELECT s FROM species s")
-public class Species {
+import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+
+import com.humanbooster.zobi.business.Species;
+import com.humanbooster.zobi.business.SpeciesServiceInterface;
+
+@Model
+public class SpeciesJsf {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long SpeciesId;
-	@Column(unique=true)
+	@Inject
+	private SpeciesServiceInterface speciesService;
 	private String latinName;
 	private String commonName;
 	private String diet;
+	
+	/**
+	 * @return a list of all Species
+	 */
+	public ArrayList<Species> getAllSpecies() {
+		return speciesService.getAllSpecies();
+	}
 	
 	/**
 	 * @return the latinName
@@ -58,18 +59,6 @@ public class Species {
 	 */
 	public void setDiet(String diet) {
 		this.diet = diet;
-	}
-	/**
-	 * @return the id
-	 */
-	public long getSpeciesId() {
-		return SpeciesId;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setSpeciesId(long id) {
-		this.SpeciesId = id;
 	}
 
 }

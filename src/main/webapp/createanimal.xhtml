@@ -20,7 +20,7 @@
 				<h:outputLabel for="matricule">
 					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
 				</h:outputLabel>
-				<h:inputText id="matricule" value="#{animal.matricule}"
+				<h:inputText id="matricule" value="#{animalJsf.matricule}"
 					required="true" requiredMessage="#{msgs.mandatory}"
 					validatorMessage="#{msgs.lenght5}">
 					<f:validateLength minimum="5" />
@@ -30,7 +30,7 @@
 				<h:outputLabel for="age">
 					<h:outputText id="ageLabel" value="#{msgs.animalage}" />
 				</h:outputLabel>
-				<h:inputText id="age" value="#{animal.age}" required="true"
+				<h:inputText id="age" value="#{animalJsf.age}" required="true"
 					requiredMessage="#{msgs.mandatory}"
 					converterMessage="#{msgs.integer}"
 					validatorMessage="#{msgs.agemin}">
@@ -42,30 +42,30 @@
 				<h:outputLabel for="birthPlace">
 					<h:outputText id="birthPlaceLabel" value="#{msgs.animalbirthplace}" />
 				</h:outputLabel>
-				<h:inputText id="birthPlace" value="#{animal.birthPlace}"
+				<h:inputText id="birthPlace" value="#{animalJsf.birthPlace}"
 					required="true" requiredMessage="#{msgs.mandatory}"
-					validator="#{animal.validateBirthPlace}">
+					validator="#{animalJsf.validateBirthPlace}">
 				</h:inputText>
 				<h:message style="color: yellow" for="birthPlace" />
 
 				<h:outputLabel for="species">
 					<h:outputText id="speciesLabel" value="#{msgs.animalspecies}" />
 				</h:outputLabel>
-				<h:selectOneMenu id="species" value="#{species.commonName}"
+				<h:selectOneMenu id="species" value="#{animalJsf.species}"
 					required="true" requiredMessage="#{msgs.mandatory}">
 					<f:selectItem itemValue="#{null}"
 						itemLabel="#{msgs.animalspeciesdefault}" />
 					<f:selectItems var="currentSpecies"
-						itemValue="#{currentSpecies.commonName}"
+						itemValue="#{currentSpecies.speciesId}"
 						itemLabel="#{currentSpecies.commonName}"
-						value="#{animal.allSpecies}" />
+						value="#{speciesJsf.allSpecies}" />
 				</h:selectOneMenu>
 				<h:message style="color: red" for="species" />
 
 				<h:outputLabel for="enclosure">
 					<h:outputText id="enclosureLabel" value="#{msgs.animalenclosure}" />
 				</h:outputLabel>
-				<h:selectOneMenu id="enclosure" value="#{enclosure.id}"
+				<h:selectOneMenu id="enclosure" value="#{animalJsf.enclosure}"
 					required="true" requiredMessage="#{msgs.mandatory}">
 					<f:selectItem itemValue="#{null}"
 						itemLabel="#{msgs.animalenclosuredefault}" />
@@ -85,7 +85,7 @@
 				<h:outputText id="createLabel" value="#{msgs.donotpressthe}" />
 			</h:outputLabel>
 			<h:commandButton id="create" value="#{msgs.redbutton}"
-				action="create" />
+				action="#{animalJsf.create}" />
 			<br />
 			<br />
 		</h:form>

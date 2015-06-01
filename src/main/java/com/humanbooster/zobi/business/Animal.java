@@ -1,47 +1,27 @@
 package com.humanbooster.zobi.business;
 
-import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
-import javax.enterprise.inject.Model;
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
-import javax.inject.Inject;
-
-@Model
+@Entity(name="animal")
+@NamedQuery(name="Animal.findAll", query="SELECT a FROM animal a")
 public class Animal {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long AnimalId;
+	@Column(unique=true)
 	private String matricule;
 	private int age;
 	private String birthPlace;
+	private String enclosure;
+	@ManyToOne
 	private Species species;
-	private Enclosure enclosure;
-	
-	@Inject
-	private AnimalListServiceInterface listSpeciesService;
-
-	/**
-	 * @param context a FacesContext.
-	 * @param component a UIComponent.
-	 * @param value an Object the birthPlace to validate.
-	 * @throws ValidatorException
-	 */
-	public void validateBirthPlace(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		String birthPlace = (String) value;
-		String errorMessage = null;
-		if (birthPlace.length() < 4) {
-			errorMessage = "The birth place must be at least 4 characters long.";
-		}
-		if (errorMessage == null && !birthPlace.startsWith("ZOO_") && !birthPlace.matches("WILD")) {
-			errorMessage = "The birth place must be on format 'WILD' or 'ZOO_something'.";
-		}
-		if (errorMessage != null) {
-			FacesMessage facesMessage = new FacesMessage(errorMessage);
-			facesMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(facesMessage);
-		}
-	}
 
 	/**
 	 * @return the matricule
@@ -106,22 +86,29 @@ public class Animal {
 	/**
 	 * @return the enclosure
 	 */
-	public Enclosure getEnclosure() {
+	public String getEnclosure() {
 		return enclosure;
 	}
 
 	/**
 	 * @param enclosure the enclosure to set
 	 */
-	public void setEnclosure(Enclosure enclosure) {
+	public void setEnclosure(String enclosure) {
 		this.enclosure = enclosure;
 	}
 
 	/**
-	 * @return a list of all Species
+	 * @return the id
 	 */
-	public ArrayList<Species> getAllSpecies() {
-		return listSpeciesService.getAllSpecies();
+	public long getAnimalId() {
+		return AnimalId;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setAnimalId(long id) {
+		this.AnimalId = id;
 	}
 
 }

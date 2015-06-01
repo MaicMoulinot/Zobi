@@ -8,7 +8,7 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>#{msgs.animaldisplay}#{animal.matricule}</h2>
+		<h2>#{msgs.animaldisplay}#{animalJsf.matricule}</h2>
 		<br />
 		<br />
 		<h:form>
@@ -17,34 +17,34 @@
 				<h:outputLabel for="matricule">
 					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
 				</h:outputLabel>
-				<h:outputText id="matricule" value="#{animal.matricule}" />
+				<h:outputText id="matricule" value="#{animalJsf.matricule}" />
 
 				<h:outputLabel for="age">
 					<h:outputText id="ageLabel" value="#{msgs.animalage}" />
 				</h:outputLabel>
-				<h:outputText id="age" value="#{animal.age}" />
+				<h:outputText id="age" value="#{animalJsf.age}" />
 
 				<h:outputLabel for="birthPlace">
 					<h:outputText id="birthPlaceLabel" value="#{msgs.animalbirthplace}" />
 				</h:outputLabel>
-				<h:outputText id="birthPlace" value="#{animal.birthPlace}" />
+				<h:outputText id="birthPlace" value="#{animalJsf.birthPlace}" />
 
 				<h:outputLabel for="species">
 					<h:outputText id="speciesLabel" value="#{msgs.animalspecies}" />
 				</h:outputLabel>
-				<h:outputText id="species" value="#{species.commonName}" />
-				
+				<h:outputText id="species" value="#{animalJsf.species}" />
+
 				<h:outputLabel for="enclosure">
 					<h:outputText id="enclosureLabel" value="#{msgs.animalenclosure}" />
 				</h:outputLabel>
-				<h:outputText id="enclosure" value="#{enclosure.id}" />
+				<h:outputText id="enclosure" value="#{animalJsf.enclosure}" />
 
 			</h:panelGrid>
 
-			<!-- Button -->
+			<!-- Buttons -->
 			<br />
 			<br />
-			<h:panelGrid columns="4">
+			<h:panelGrid columns="2">
 				<h:outputLabel for="food">
 					<h:outputText id="foodLabel" value="#{msgs.animalfood}" />
 				</h:outputLabel>
@@ -53,8 +53,13 @@
 				<h:outputLabel for="medication">
 					<h:outputText id="medicationLabel" value="#{msgs.animalmedication}" />
 				</h:outputLabel>
-				<h:commandButton id="medication" value="#{msgs.animalmedicationshort}"
-					action="medication" />
+				<h:commandButton id="medication"
+					value="#{msgs.animalmedicationshort}" action="medication" />
+				<h:outputLabel for="allanimals">
+					<h:outputText id="allanimalsLabel" value="List all animals" />
+				</h:outputLabel>
+				<h:commandButton id="allanimals"
+					value="List" action="listanimals" />
 			</h:panelGrid>
 			<br />
 			<br />

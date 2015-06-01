@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/Template/Basic.xhtml">
+	<ui:define name="content">
+		<h2>All animals</h2>
+		<br />
+		<br />
+		<h:form>
+			<h:outputLabel value="No animals yet."
+				rendered="#{empty listAnimalsJsf.allAnimals}" styleClass="messages" />
+			<h:dataTable id="allanimals" value="#{listAnimalsJsf.allAnimals}"
+				var="currentAnimal"
+				rendered="#{not empty listAnimalsJsf.allAnimals}">
+				<h:column>
+<!-- 					<f:facet name="header">#{msgs.animalid}</f:facet> -->
+					<f:facet name="header">id</f:facet>
+    				#{currentAnimal.matricule} #{currentAnimal.animalId}
+    			</h:column>
+				<h:column>
+<!-- 					<f:facet name="header">#{msgs.animalage}</f:facet> -->
+					<f:facet name="header">age</f:facet>
+    				#{currentAnimal.age}
+    			</h:column>
+				<h:column>
+<!-- 					<f:facet name="header">#{msgs.animalbirthplace}</f:facet> -->
+					<f:facet name="header">birthplace</f:facet>
+    				#{currentAnimal.birthPlace}
+    			</h:column>
+				<h:column>
+<!-- 					<f:facet name="header">#{msgs.animalspecies}</f:facet> -->
+					<f:facet name="header">species</f:facet>
+    				#{currentAnimal.species.commonName}
+    			</h:column>
+				<h:column>
+<!-- 					<f:facet name="header">#{msgs.animalenclosure}</f:facet> -->
+					<f:facet name="header">enclosure</f:facet>
+    				#{currentAnimal.enclosure}
+    			</h:column>
+			</h:dataTable>
+
+			<!-- Buttons -->
+			<br />
+			<br />
+			<h:panelGrid columns="4">
+				<h:outputLabel for="create">
+					<h:outputText id="createLabel" value="Create a new animal" />
+				</h:outputLabel>
+				<h:commandButton id="create" value="New" action="create" />
+				<!-- 				<h:outputLabel for="animal"> -->
+				<!-- 					<h:outputText id="animalLabel" value="Displays 1 animal" /> -->
+				<!-- 				</h:outputLabel> -->
+				<!-- 				<h:commandButton id="animal" value="Details" -->
+				<!-- 					action="animal" /> -->
+			</h:panelGrid>
+			<br />
+			<br />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
