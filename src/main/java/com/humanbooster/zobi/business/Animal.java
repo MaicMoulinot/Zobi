@@ -3,7 +3,6 @@ package com.humanbooster.zobi.business;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -13,15 +12,16 @@ import javax.persistence.NamedQuery;
 public class Animal {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private long AnimalId;
 	@Column(unique=true)
 	private String matricule;
 	private int age;
 	private String birthPlace;
 	private String enclosure;
-	@ManyToOne
-	private Species species;
+//	@ManyToOne
+//	private Species species;
+	private String species;
 
 	/**
 	 * @return the matricule
@@ -71,7 +71,7 @@ public class Animal {
 	/**
 	 * @return the species
 	 */
-	public Species getSpecies() {
+	public String getSpecies() {
 		return species;
 	}
 
@@ -79,7 +79,7 @@ public class Animal {
 	 * @param species
 	 *            the species to set
 	 */
-	public void setSpecies(Species species) {
+	public void setSpecies(String species) {
 		this.species = species;
 	}
 
