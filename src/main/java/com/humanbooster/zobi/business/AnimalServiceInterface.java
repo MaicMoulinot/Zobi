@@ -13,12 +13,12 @@ public interface AnimalServiceInterface {
 	 * @param matricule String the matricule.
 	 * @param age int the age in days.
 	 * @param birthPlace String the origin.
-	 * @param species String the species' common name.
+	 * @param species Species the species.
 	 * @param enclosure String the enclosure name.
 	 * @return an Animal.
 	 * @see com.humanbooster.zobi.business.Animal
 	 */
-	public Animal createAnimal(String matricule, int age, String birthPlace, String species, String enclosure);
+	public Animal createAnimal(String matricule, int age, String birthPlace, Species species, String enclosure);
 	
 	/**
 	 * @return a list of all animals.

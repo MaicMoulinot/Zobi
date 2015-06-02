@@ -24,6 +24,6 @@ public class SpeciesService implements SpeciesServiceInterface {
 
 	@Override
 	public Species getFromId(String speciesId) {
-		return speciesDao.findById(Long.getLong(speciesId));
+		return speciesDao.findById(Long.valueOf(speciesId));
 	}
 }

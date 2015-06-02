@@ -19,9 +19,8 @@ public class Animal {
 	private int age;
 	private String birthPlace;
 	private String enclosure;
-//	@ManyToOne
-//	private Species species;
-	private String species;
+	@ManyToOne
+	private Species species;
 
 	/**
 	 * @return the matricule
@@ -71,7 +70,7 @@ public class Animal {
 	/**
 	 * @return the species
 	 */
-	public String getSpecies() {
+	public Species getSpecies() {
 		return species;
 	}
 
@@ -79,7 +78,7 @@ public class Animal {
 	 * @param species
 	 *            the species to set
 	 */
-	public void setSpecies(String species) {
+	public void setSpecies(Species species) {
 		this.species = species;
 	}
 

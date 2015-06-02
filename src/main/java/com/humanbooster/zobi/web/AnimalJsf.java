@@ -9,20 +9,24 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 import com.humanbooster.zobi.business.AnimalServiceInterface;
+import com.humanbooster.zobi.business.Species;
+import com.humanbooster.zobi.business.SpeciesServiceInterface;
 
 @ManagedBean
 @SessionScoped
 public class AnimalJsf {
-	
+
 	@Inject
 	private AnimalServiceInterface animalService;
-	
+	@Inject
+	private SpeciesServiceInterface speciesService;
+
 	private String matricule;
 	private int age;
 	private String birthPlace;
-	private String species;
+	private String speciesId;
 	private String enclosure;
-	
+
 	/**
 	 * @param context a FacesContext.
 	 * @param component a UIComponent.
@@ -44,9 +48,10 @@ public class AnimalJsf {
 			throw new ValidatorException(facesMessage);
 		}
 	}
-	
+
 	public String create() {
-		animalService.createAnimal(matricule, age, birthPlace, species, enclosure);
+		Species speciesFromDao = speciesService.getFromId(speciesId);
+		animalService.createAnimal(matricule, age, birthPlace, speciesFromDao, enclosure);
 		return "create";
 	}
 
@@ -98,16 +103,16 @@ public class AnimalJsf {
 	/**
 	 * @return the species
 	 */
-	public String getSpecies() {
-		return species;
+	public String getSpeciesId() {
+		return speciesId;
 	}
 
 	/**
 	 * @param species
 	 *            the species to set
 	 */
-	public void setSpecies(String species) {
-		this.species = species;
+	public void setSpeciesId(String speciesId) {
+		this.speciesId = speciesId;
 	}
 
 	/**

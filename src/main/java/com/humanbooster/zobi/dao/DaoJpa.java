@@ -6,8 +6,11 @@ package com.humanbooster.zobi.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author humanbooster
@@ -17,6 +20,7 @@ public abstract class DaoJpa<K, E> implements Dao<K, E> {
 
 	protected Class<E> entityClass;
 	@Inject
+	@PersistenceContext
 	protected EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
@@ -30,12 +34,7 @@ public abstract class DaoJpa<K, E> implements Dao<K, E> {
 	 * @see com.humanbooster.zobi.dao.Dao#persist(java.lang.Object)
 	 */
 	public void persist(E entity) {
-		try {
-			entityManager.persist(entity);
-			//		entityManager.flush();
-		} catch (Exception exception) {
-			System.err.println("PB:" + entity.toString() + exception.getMessage());
-		}
+		entityManager.persist(entity);
 	}
 
 	/**
@@ -51,6 +50,7 @@ public abstract class DaoJpa<K, E> implements Dao<K, E> {
 	 * @return E an entity.
 	 * @see com.humanbooster.zobi.dao.Dao#findById(java.lang.Object)
 	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public E findById(K id) {
 		return entityManager.find(entityClass, id);
 	}
@@ -60,6 +60,7 @@ public abstract class DaoJpa<K, E> implements Dao<K, E> {
 	 * @return a collection of entities.
 	 * @see com.humanbooster.zobi.dao.Dao#findAll()
 	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public Collection<E> findAll() {
 		return entityManager.createNamedQuery(entityClass.getSimpleName() + ".findAll").getResultList();
 	}
