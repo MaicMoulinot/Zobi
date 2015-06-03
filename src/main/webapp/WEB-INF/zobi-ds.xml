@@ -26,11 +26,11 @@
     <datasource jndi-name="java:jboss/datasources/zobiDS"
         pool-name="zobi" enabled="true"
         use-java-context="true">
-        <connection-url>jdbc:h2:mem:zobi;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1</connection-url>
-        <driver>h2</driver>
+        <connection-url>jdbc:postgresql://192.168.11.159:5432/BD_ZOO</connection-url>
+        <driver>postgresql-9.4-1201.jdbc4.jar</driver>
         <security>
-            <user-name>sa</user-name>
-            <password>sa</password>
+            <user-name>postgres</user-name>
+            <password>hb2015</password>
         </security>
     </datasource>
 </datasources>
