@@ -3,6 +3,8 @@ package com.humanbooster.zobi.business;
 import java.util.ArrayList;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import com.humanbooster.zobi.dao.AnimalDaoInterface;
@@ -32,6 +34,7 @@ public class AnimalService implements AnimalServiceInterface {
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ArrayList<Animal> getAllAnimals() {
 		return (ArrayList<Animal>) animalDao.findAll();
 	}

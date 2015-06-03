@@ -11,6 +11,10 @@ public interface SpeciesServiceInterface {
 	/**
 	 * @return a list of all species.
 	 */
+	public void persist(Species species);
+	/**
+	 * @return a list of all species.
+	 */
 	public ArrayList<Species> getAllSpecies();
 
 	/**
