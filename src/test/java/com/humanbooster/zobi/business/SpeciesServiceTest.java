@@ -33,7 +33,6 @@ public class SpeciesServiceTest extends TestCase {
 		speciesService = new SpeciesService();
 		speciesService.setSpeciesDao(new SpeciesDaoFixed());
     	species = new Species();
-//    	species.setSpeciesId(12051981);
     	species.setCommonName("Boa");
     	species.setLatinName("Boa constrictor");
     	species.setDiet("Bird");
