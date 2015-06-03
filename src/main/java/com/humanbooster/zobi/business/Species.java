@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
+import com.humanbooster.zobi.utils.XMLTools;
+
 /**
  * @author humanbooster
  *
@@ -71,4 +73,23 @@ public class Species {
 		this.SpeciesId = id;
 	}
 
+	
+    public static void main(String[] args) {
+        try {
+        	// Construction of object Species
+        	Species species = new Species();
+        	species.setSpeciesId(12051981);
+        	species.setCommonName("Boa");
+        	species.setLatinName("Boa constrictor");
+        	species.setDiet("Bird");
+        	// Encode to XML
+            XMLTools.encodeToFile(species, "species.xml");
+            System.out.println("encode XML ok : commonname=" + species.getCommonName());
+            // Decode from XML
+            Species speciesFromXml = (Species) XMLTools.decodeFromFile("species.xml");
+            System.out.println("decode XML ok : commonname=" + speciesFromXml.getCommonName());
+        } catch(Exception e) {
+        	System.out.println("FOIRAGE XML" + e.getMessage());
+        }
+    }
 }
