@@ -3,19 +3,21 @@
  */
 package com.humanbooster.zobi.business;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
+
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.humanbooster.zobi.dao.AnimalDaoFixed;
+
 /**
  * @author humanbooster
  *
  */
-public class AnimalServiceTest {
+public class AnimalServiceTest extends TestCase {
 	
 	AnimalService animalService;
 
@@ -25,6 +27,7 @@ public class AnimalServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		animalService = new AnimalService();
+		animalService.setAnimalDao(new AnimalDaoFixed());
 	}
 
 	/**

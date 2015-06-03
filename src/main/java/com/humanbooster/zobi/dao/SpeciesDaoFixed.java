@@ -28,47 +28,51 @@ public class SpeciesDaoFixed extends DaoFixed<Long, Species> implements SpeciesD
 			boa.setCommonName("Boa");
 			boa.setLatinName("Boa constrictor");
 			boa.setDiet("Meat");
-			boa.setSpeciesId(0);
+			boa.setSpeciesId(1);
 			listSpecies.put(boa.getSpeciesId(), boa);
 			
 			Species bonobo = new Species();
 			bonobo.setCommonName("Bonobo");
 			bonobo.setLatinName("Pan paniscus");
 			bonobo.setDiet("Bananas");
-			bonobo.setSpeciesId(1);
+			bonobo.setSpeciesId(2);
 			listSpecies.put(bonobo.getSpeciesId(), bonobo);
 			
 			Species elephant = new Species();
 			elephant.setCommonName("Elephant");
 			elephant.setLatinName("Loxodonta africana");
 			elephant.setDiet("Grass");
-			elephant.setSpeciesId(2);
+			elephant.setSpeciesId(3);
 			listSpecies.put(elephant.getSpeciesId(), elephant);
 			
 			Species kookaburra = new Species();
 			kookaburra.setCommonName("Kookaburra");
 			kookaburra.setLatinName("Dacelo novaeguineae");
 			kookaburra.setDiet("Insects");
-			kookaburra.setSpeciesId(3);
+			kookaburra.setSpeciesId(4);
 			listSpecies.put(kookaburra.getSpeciesId(), kookaburra);
 			
 			Species whale = new Species();
 			whale.setCommonName("Whale");
 			whale.setLatinName("Eubalaena glacialis");
 			whale.setDiet("Krill");
-			whale.setSpeciesId(4);
+			whale.setSpeciesId(5);
 			listSpecies.put(whale.getSpeciesId(), whale);
 		}
 	}
 
 	@Override
-	public ArrayList<Species> findAll() {		
-		return (ArrayList<Species>) listSpecies.values();
+	public ArrayList<Species> findAll() {
+		ArrayList<Species> result = new ArrayList<>();
+		for (Species species : listSpecies.values()) {
+			result.add(species);
+		}
+		return result;
 	}
 
 	@Override
 	public void persist(Species entity) {
-		listSpecies.put(Long.valueOf(listSpecies.size()), entity);
+		listSpecies.put(Long.valueOf(listSpecies.size()+1), entity);
 	}
 
 	@Override

@@ -35,4 +35,12 @@ public class SpeciesService implements SpeciesServiceInterface {
 	public Species getFromId(String speciesId) {
 		return speciesDao.findById(Long.valueOf(speciesId));
 	}
+	
+	/**
+	 * This method is used for Junit testing only.
+	 * @param speciesDao the SpeciesDao to set
+	 */
+	void setSpeciesDao(SpeciesDaoInterface speciesDao) {
+		this.speciesDao = speciesDao;
+	}
 }

@@ -36,6 +36,18 @@ public class AnimalService implements AnimalServiceInterface {
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ArrayList<Animal> getAllAnimals() {
-		return (ArrayList<Animal>) animalDao.findAll();
+		ArrayList<Animal> result = new ArrayList<>();
+		for (Animal animal : animalDao.findAll()) {
+			result.add(animal);
+		}
+		return result;
+	}
+
+	/**
+	 * This method is used for Junit testing only.
+	 * @param animalDao the animalDao to set
+	 */
+	void setAnimalDao(AnimalDaoInterface animalDao) {
+		this.animalDao = animalDao;
 	}
 }

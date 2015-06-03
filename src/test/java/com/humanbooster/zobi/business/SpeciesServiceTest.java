@@ -3,19 +3,24 @@
  */
 package com.humanbooster.zobi.business;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
+
+import javax.ejb.Stateless;
+
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.humanbooster.zobi.dao.SpeciesDaoFixed;
+
 /**
  * @author humanbooster
  *
  */
-public class SpeciesServiceTest {
+@Stateless
+public class SpeciesServiceTest extends TestCase {
 	
 	private SpeciesService speciesService;
 	private Species species;
@@ -26,8 +31,9 @@ public class SpeciesServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		speciesService = new SpeciesService();
+		speciesService.setSpeciesDao(new SpeciesDaoFixed());
     	species = new Species();
-    	species.setSpeciesId(12051981);
+//    	species.setSpeciesId(12051981);
     	species.setCommonName("Boa");
     	species.setLatinName("Boa constrictor");
     	species.setDiet("Bird");
@@ -39,6 +45,7 @@ public class SpeciesServiceTest {
 	@After
 	public void tearDown() throws Exception {
 		speciesService = null;
+		species = null;
 	}
 	
 	/**
@@ -47,7 +54,7 @@ public class SpeciesServiceTest {
 	public final void testPersist() {
 		try {
 			speciesService.persist(species);
-			assertTrue(true);
+			assertEquals(species.getCommonName(), "Boa");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -67,7 +74,7 @@ public class SpeciesServiceTest {
 	 */
 	@Test
 	public final void testGetFromId() {
-		Species species = speciesService.getFromId("12051981");
+		Species species = speciesService.getFromId("6");
 		assertNotNull(species);
 	}
 
