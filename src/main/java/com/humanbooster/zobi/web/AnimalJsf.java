@@ -1,19 +1,21 @@
 package com.humanbooster.zobi.web;
 
+import java.util.ArrayList;
+
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.component.html.HtmlDataTable;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
+import com.humanbooster.zobi.business.Animal;
 import com.humanbooster.zobi.business.AnimalServiceInterface;
 import com.humanbooster.zobi.business.Species;
 import com.humanbooster.zobi.business.SpeciesServiceInterface;
 
-@ManagedBean
-@SessionScoped
+@Model
 public class AnimalJsf {
 
 	@Inject
@@ -24,9 +26,37 @@ public class AnimalJsf {
 	private String matricule;
 	private int age;
 	private String birthPlace;
-	private String speciesId;
+	private long speciesId;
 	private String enclosure;
-
+	
+	// Managed Backing Bean
+	private HtmlDataTable dataTable;
+	
+    /**
+     * @return "animal" (navigation). Set the animal and the hidden input field.
+     */
+    public String editAnimal() {
+        // Get selected animal to be displayed.
+    	Animal animalFromList = (Animal) dataTable.getRowData();
+    	if (animalFromList != null) {
+    		// Set animal's properties to be displayed.
+    		setMatricule(animalFromList.getMatricule());
+    		setAge(animalFromList.getAge());
+    		setBirthPlace(animalFromList.getBirthPlace());
+    		setEnclosure(animalFromList.getEnclosure());
+    		setSpeciesId(animalFromList.getSpecies().getSpeciesId());
+    	}
+    	// Navigation case.
+        return "animal";
+    }
+    
+	/**
+	 * @return a list of all animals.
+	 */
+	public ArrayList<Animal> getAllAnimals() {
+		return animalService.getAllAnimals();
+	}
+    
 	/**
 	 * @param context a FacesContext.
 	 * @param component a UIComponent.
@@ -103,7 +133,7 @@ public class AnimalJsf {
 	/**
 	 * @return the species
 	 */
-	public String getSpeciesId() {
+	public long getSpeciesId() {
 		return speciesId;
 	}
 
@@ -111,7 +141,7 @@ public class AnimalJsf {
 	 * @param species
 	 *            the species to set
 	 */
-	public void setSpeciesId(String speciesId) {
+	public void setSpeciesId(long speciesId) {
 		this.speciesId = speciesId;
 	}
 
@@ -127,6 +157,20 @@ public class AnimalJsf {
 	 */
 	public void setEnclosure(String enclosure) {
 		this.enclosure = enclosure;
+	}
+
+	/**
+	 * @return the dataTable
+	 */
+	public HtmlDataTable getDataTable() {
+		return dataTable;
+	}
+
+	/**
+	 * @param dataTable the dataTable to set
+	 */
+	public void setDataTable(HtmlDataTable dataTable) {
+		this.dataTable = dataTable;
 	}
 
 }

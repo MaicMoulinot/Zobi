@@ -12,7 +12,6 @@
 		<br />
 		<br />
 		<h:form>
-
 			<h:panelGrid columns="2">
 				<h:outputLabel for="matricule">
 					<h:outputText id="matriculeLabel" value="#{msgs.animalid}" />
@@ -51,9 +50,9 @@
 				<h:commandButton id="food" value="#{msgs.animalfoodshort}"
 					action="food" />
 				<h:outputLabel for="allanimals">
-					<h:outputText id="allanimalsLabel" value="List all animals" />
+					<h:outputText id="allanimalsLabel" value="#{msgs.animallist}: " />
 				</h:outputLabel>
-				<h:commandButton id="allanimals" value="List" action="listanimals" />
+				<h:commandButton id="allanimals" value="#{msgs.animallistshort}" action="listanimals" />
 			</h:panelGrid>
 			<br />
 			<br />

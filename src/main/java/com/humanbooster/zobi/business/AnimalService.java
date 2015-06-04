@@ -42,6 +42,11 @@ public class AnimalService implements AnimalServiceInterface {
 		}
 		return result;
 	}
+	
+	@Override
+	public Animal getAnimal(long idAnimal) {
+		return animalDao.findById(idAnimal);
+	}
 
 	/**
 	 * This method is used for Junit testing only.

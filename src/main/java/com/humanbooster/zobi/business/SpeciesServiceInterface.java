@@ -18,8 +18,8 @@ public interface SpeciesServiceInterface {
 	public ArrayList<Species> getAllSpecies();
 
 	/**
-	 * @param speciesId a String the species' Id.
+	 * @param speciesId a long the species' Id.
 	 * @return the Species.
 	 */
-	public Species getFromId(String speciesId);
+	public Species getFromId(long speciesId);
 }

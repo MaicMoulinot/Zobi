@@ -32,8 +32,8 @@ public class SpeciesService implements SpeciesServiceInterface {
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Species getFromId(String speciesId) {
-		return speciesDao.findById(Long.valueOf(speciesId));
+	public Species getFromId(long speciesId) {
+		return speciesDao.findById(speciesId);
 	}
 	
 	/**

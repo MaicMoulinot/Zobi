@@ -25,4 +25,10 @@ public interface AnimalServiceInterface {
 	 * @see com.humanbooster.zobi.business.Animal
 	 */
 	public ArrayList<Animal> getAllAnimals();
+	
+	/**
+	 * @param idAnimal a long the animal's id.
+	 * @return teh Animal
+	 */
+	public Animal getAnimal(long idAnimal);
 }

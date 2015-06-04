@@ -73,7 +73,7 @@ public class SpeciesServiceTest extends TestCase {
 	 */
 	@Test
 	public final void testGetFromId() {
-		Species species = speciesService.getFromId("6");
+		Species species = speciesService.getFromId(6);
 		assertNotNull(species);
 	}
 

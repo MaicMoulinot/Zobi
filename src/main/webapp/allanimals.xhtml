@@ -8,15 +8,15 @@
 
 <ui:composition template="WEB-INF/Template/Basic.xhtml">
 	<ui:define name="content">
-		<h2>All animals</h2>
+		<h2>#{msgs.animallist}</h2>
 		<br />
 		<br />
 		<h:form>
-			<h:outputLabel value="No animals yet."
-				rendered="#{empty listAnimalsJsf.allAnimals}" styleClass="messages" />
-			<h:dataTable id="allanimals" value="#{listAnimalsJsf.allAnimals}"
-				var="currentAnimal"
-				rendered="#{not empty listAnimalsJsf.allAnimals}">
+			<h:outputLabel value="#{msgs.animalempty}"
+				rendered="#{empty animalJsf.allAnimals}" styleClass="messages" />
+			<h:dataTable value="#{animalJsf.allAnimals}" id="listanimals"
+				var="currentAnimal" binding="#{animalJsf.dataTable}"
+				rendered="#{not empty animalJsf.allAnimals}">
 				<h:column>
 					<f:facet name="header">#{msgs.animalid}</f:facet>
     				#{currentAnimal.matricule}
@@ -37,21 +37,20 @@
 					<f:facet name="header">#{msgs.animalenclosure}</f:facet>
     				#{currentAnimal.enclosure}
     			</h:column>
+    			<h:column>
+					<f:facet name="header">#{msgs.animaldisplay}</f:facet>
+					<h:commandLink value="#{currentAnimal.matricule}" action="#{animalJsf.editAnimal()}" />
+    			</h:column>
 			</h:dataTable>
 
 			<!-- Buttons -->
 			<br />
 			<br />
-			<h:panelGrid columns="4">
+			<h:panelGrid columns="2">
 				<h:outputLabel for="create">
-					<h:outputText id="createLabel" value="Create a new animal" />
+					<h:outputText id="createLabel" value="#{msgs.animalnew}" />
 				</h:outputLabel>
-				<h:commandButton id="create" value="New" action="create" />
-				<!-- 				<h:outputLabel for="animal"> -->
-				<!-- 					<h:outputText id="animalLabel" value="Displays 1 animal" /> -->
-				<!-- 				</h:outputLabel> -->
-				<!-- 				<h:commandButton id="animal" value="Details" -->
-				<!-- 					action="animal" /> -->
+				<h:commandButton id="create" value="#{msgs.animalnewshort}" action="create" />
 			</h:panelGrid>
 			<br />
 			<br />
