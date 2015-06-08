@@ -44,6 +44,7 @@ public class AnimalService implements AnimalServiceInterface {
 	}
 	
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public Animal getAnimal(long idAnimal) {
 		return animalDao.findById(idAnimal);
 	}
